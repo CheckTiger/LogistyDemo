@@ -22,6 +22,11 @@ public class UtilNet {
                 .build();
         return retrofit;
     }
+
+    /**
+     * 返回我们定义的api接口对象
+     * @return
+     */
     public static API_Interface getApi_interface(){
         API_Interface apiInterface = UtilNet.getRetrofit().create(API_Interface.class);
         return apiInterface;
