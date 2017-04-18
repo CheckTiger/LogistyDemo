@@ -1,4 +1,4 @@
-package cn.sxh.logisticsdemo;
+package cn.sxh.logisticsdemo.Net;
 
 import cn.sxh.logisticsdemo.APInterface.API_Interface;
 import retrofit2.Retrofit;
@@ -17,7 +17,7 @@ public class UtilNet {
      */
     public static Retrofit getRetrofit(){
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(API.BASE_URL)
+                .baseUrl(API.BASE_PUBLIC_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         return retrofit;

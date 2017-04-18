@@ -1,6 +1,6 @@
 package cn.sxh.logisticsdemo.APInterface;
 
-import cn.sxh.logisticsdemo.UserBean;
+import cn.sxh.logisticsdemo.bean.UserBean;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;

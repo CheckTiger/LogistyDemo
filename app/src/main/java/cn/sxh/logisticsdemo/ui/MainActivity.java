@@ -1,5 +1,6 @@
-package cn.sxh.logisticsdemo;
+package cn.sxh.logisticsdemo.ui;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -10,13 +11,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import cn.sxh.logisticsdemo.APInterface.API_Interface;
+import cn.sxh.logisticsdemo.R;
+import cn.sxh.logisticsdemo.bean.UserBean;
+import cn.sxh.logisticsdemo.Net.UtilNet;
 import retrofit2.Call;
-import retrofit2.CallAdapter;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -77,12 +77,13 @@ public class MainActivity extends AppCompatActivity {
                     Log.e(TAG,"是否注册成功----->>>>>"+result.isSuccess());
                     Log.e(TAG,"注册成功时间----->>>>>"+result.getTime());
                     Log.e(TAG,"是否注册成功原因----->>>>>"+result.getReason());
-                    Toast.makeText(MainActivity.this, result.getReason(), Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainActivity.this,LoginActivity.class));
                 }
 
                 @Override
                 public void onFailure(Call<UserBean> call, Throwable t) {
                     Log.e(TAG,"错误原因----->>>>>>"+t.getMessage());
+                    startActivity(new Intent(MainActivity.this,LoginActivity.class));
                     Toast.makeText(MainActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });

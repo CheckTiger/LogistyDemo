@@ -1,4 +1,4 @@
-package cn.sxh.logisticsdemo;
+package cn.sxh.logisticsdemo.bean;
 
 /**
  * @auther snowTiger
