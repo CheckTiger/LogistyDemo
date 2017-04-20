@@ -8,7 +8,11 @@ import android.widget.TextView;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
+import cn.sxh.logisticsdemo.Net.UtilNet;
 import cn.sxh.logisticsdemo.R;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity implements GLSurfaceView.Renderer{
 
@@ -23,9 +27,29 @@ public class LoginActivity extends AppCompatActivity implements GLSurfaceView.Re
 
     private void initUI() {
         mTextView = (TextView) findViewById(R.id.tv);
+        getLogistics();
         initOpenGl();
     }
 
+    /**
+     * 获取物流信息
+     */
+    private void getLogistics() {
+        Call<Object> objectCall = UtilNet.getApi_interface().getLogistics("100247","100059","102183213443");
+        objectCall.enqueue(objectCallback);
+    }
+
+    private final Callback<Object> objectCallback = new Callback<Object>() {
+        @Override
+        public void onResponse(Call<Object> call, Response<Object> response) {
+
+        }
+
+        @Override
+        public void onFailure(Call<Object> call, Throwable t) {
+
+        }
+    };
     private void initOpenGl() {
         GLSurfaceView glSurfaceView = new GLSurfaceView(this);
         glSurfaceView.setRenderer(renderer);
